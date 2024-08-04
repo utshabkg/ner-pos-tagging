@@ -1,0 +1,5 @@
+Best Hyperparameters:
+Embedding Dimension: 50
+LSTM Units: 200
+Recurrent Dropout: 0.30000000000000004
+Learning Rate: 0.007253758440904375
