@@ -1,4 +1,4 @@
-from utils.model_utils import load_data, split_validation_set, save_metrics, load_modell
+from utils.model_utils import load_data, split_validation_set, save_metrics, load_model
 import numpy as np
 import random
 import tensorflow as tf
@@ -59,7 +59,7 @@ class ModelEvaluator:
     def run(self):
         train_x, val_x, test_x, train_y_pos, val_y_pos, test_y_pos, train_y_ner, val_y_ner, test_y_ner, pos_vocab, ners_vocab = self.load_and_split_data()
 
-        model = load_modell(self.model_path)
+        model = load_model(self.model_path)
 
         print("Model loaded. Evaluating on test data...")
 

@@ -1,7 +1,7 @@
 import numpy as np
 import pickle
 from sklearn.model_selection import train_test_split
-from keras.models import load_model
+from keras.models import load_model as keras_load_model
 
 def load_data(PROCESSED_DATA_DIR):
     train_x = np.load(f"{PROCESSED_DATA_DIR}/train_x.npy")
@@ -51,5 +51,5 @@ def save_metrics(report_path, pos_accuracy, pos_classification_report, ner_accur
 
     print(f"Metrics have been saved to '{report_path}'.")
 
-def load_modell(model_path):
-    return load_model(model_path)
+def load_model(model_path):
+    return keras_load_model(model_path)
