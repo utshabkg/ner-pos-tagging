@@ -1,11 +1,11 @@
-from utils.model_utils import load_data, split_validation_set, save_metrics, load_model
+from utils.model_utils import load_data, split_validation_set, save_metrics, load_modell
 import numpy as np
 import random
 import tensorflow as tf
 from keras import backend as K
 from sklearn.metrics import classification_report, accuracy_score
 
-class ModelTrainer:
+class ModelEvaluator:
     def __init__(self, model_path, report_path, PROCESSED_DATA_DIR, seed=42):
         self.model_path = model_path
         self.report_path = report_path
@@ -59,7 +59,7 @@ class ModelTrainer:
     def run(self):
         train_x, val_x, test_x, train_y_pos, val_y_pos, test_y_pos, train_y_ner, val_y_ner, test_y_ner, pos_vocab, ners_vocab = self.load_and_split_data()
 
-        model = load_model(self.model_path)
+        model = load_modell(self.model_path)
 
         print("Model loaded. Evaluating on test data...")
 
@@ -86,7 +86,7 @@ class ModelTrainer:
 
 if __name__ == "__main__":
     model_path = '../notebooks/models_evaluation/models/base_model.h5'
-    report_path = '../reports/final_score.txt'
+    report_path = '../reports/final_score_custom.txt'
     PROCESSED_DATA_DIR = "../notebooks/analysis-preprocessing/processed_data"
-    trainer = ModelTrainer(model_path, report_path, PROCESSED_DATA_DIR)
+    trainer = ModelEvaluator(model_path, report_path, PROCESSED_DATA_DIR)
     trainer.run()
