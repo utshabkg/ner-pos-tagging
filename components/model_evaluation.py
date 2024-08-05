@@ -5,6 +5,7 @@ import tensorflow as tf
 from keras import backend as K
 from sklearn.metrics import classification_report, accuracy_score
 
+
 class ModelEvaluator:
     def __init__(self, model_path, report_path, PROCESSED_DATA_DIR, seed=42):
         self.model_path = model_path
@@ -19,8 +20,10 @@ class ModelEvaluator:
         tf.random.set_seed(self.seed)
 
     def load_and_split_data(self):
-        train_x, test_x, train_y_pos, test_y_pos, train_y_ner, test_y_ner, words_vocab, pos_vocab, ners_vocab, words, poss, ners = load_data(PROCESSED_DATA_DIR)
-        val_x, test_x, val_y_pos, test_y_pos, val_y_ner, test_y_ner = split_validation_set(test_x, test_y_pos, test_y_ner)
+        train_x, test_x, train_y_pos, test_y_pos, train_y_ner, test_y_ner, words_vocab, pos_vocab, ners_vocab, words, poss, ners = load_data(
+            PROCESSED_DATA_DIR)
+        val_x, test_x, val_y_pos, test_y_pos, val_y_ner, test_y_ner = split_validation_set(test_x, test_y_pos,
+                                                                                           test_y_ner)
         return train_x, val_x, test_x, train_y_pos, val_y_pos, test_y_pos, train_y_ner, val_y_ner, test_y_ner, pos_vocab, ners_vocab
 
     def evaluate_model(self, model, test_x, test_y_pos, test_y_ner, batch_size=128):
@@ -49,7 +52,8 @@ class ModelEvaluator:
         pred_ner_filtered = pred_ner_flat[valid_ner_indices]
 
         pos_accuracy = accuracy_score(true_pos_filtered, pred_pos_filtered)
-        pos_classification_report = classification_report(true_pos_filtered, pred_pos_filtered, target_names=list(pos_vocab.keys()), zero_division=0)
+        pos_classification_report = classification_report(true_pos_filtered, pred_pos_filtered,
+                                                          target_names=list(pos_vocab.keys()), zero_division=0)
 
         ner_accuracy = accuracy_score(true_ner_filtered, pred_ner_filtered)
         ner_classification_report = classification_report(true_ner_filtered, pred_ner_filtered, zero_division=0)
@@ -63,14 +67,22 @@ class ModelEvaluator:
 
         print("Model loaded. Evaluating on test data...")
 
-        test_loss, test_pos_loss, test_ner_loss, test_pos_accuracy, test_ner_accuracy = self.evaluate_model(model, test_x, test_y_pos, test_y_ner)
+        test_loss, test_pos_loss, test_ner_loss, test_pos_accuracy, test_ner_accuracy = self.evaluate_model(model,
+                                                                                                            test_x,
+                                                                                                            test_y_pos,
+                                                                                                            test_y_ner)
         print(f"Test Loss: {test_loss}")
         print(f"Test POS Loss: {test_pos_loss}")
         print(f"Test NER Loss: {test_ner_loss}")
         print(f"Test POS Accuracy: {test_pos_accuracy}")
         print(f"Test NER Accuracy: {test_ner_accuracy}")
 
-        pos_accuracy, pos_classification_report, ner_accuracy, ner_classification_report = self.generate_metrics(model, test_x, test_y_pos, test_y_ner, pos_vocab, ners_vocab)
+        pos_accuracy, pos_classification_report, ner_accuracy, ner_classification_report = self.generate_metrics(model,
+                                                                                                                 test_x,
+                                                                                                                 test_y_pos,
+                                                                                                                 test_y_ner,
+                                                                                                                 pos_vocab,
+                                                                                                                 ners_vocab)
 
         print("POS Tagging Metrics:")
         print(f"Accuracy: {pos_accuracy}")
@@ -81,6 +93,7 @@ class ModelEvaluator:
         print(f"\nClassification Report:\n{ner_classification_report}")
 
         save_metrics(self.report_path, pos_accuracy, pos_classification_report, ner_accuracy, ner_classification_report)
+
 
 if __name__ == "__main__":
     model_path = '../notebooks/models_evaluation/models/custom_data_model.h5'

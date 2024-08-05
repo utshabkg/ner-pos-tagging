@@ -1,9 +1,10 @@
 from utils.inference_utils import (
-    load_vocabulary_and_labels, 
-    prepare_input, 
-    decode_predictions, 
+    load_vocabulary_and_labels,
+    prepare_input,
+    decode_predictions,
     load_model_for_inference
 )
+
 
 class ModelInference:
     def __init__(self, model_path, vocab_path, pos_path, ner_path, max_len=25):
@@ -24,6 +25,7 @@ class ModelInference:
         for i in range(len(tokens)):
             print(f"{tokens[i]} \t {pos_labels[i]} \t {ner_labels[i]}")
         print()
+
 
 if __name__ == "__main__":
     model_path = '../notebooks/models_evaluation/models/base_model.h5'
