@@ -11,3 +11,8 @@ Keras-Preprocessing
 ipykernel
 bnlp-toolkit
 nltk
+
+#deploy
+fastapi
+uvicorn
+jinja2

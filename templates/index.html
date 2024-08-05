@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Prediction</title>
+</head>
+<body>
+    <h1>Model Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="sentence">Enter a Bangla sentence:</label><br>
+        <textarea id="sentence" name="sentence" rows="4" cols="50">{{ sentence | safe }}</textarea><br><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if results %}
+    <h2>Predictions:</h2>
+    <table border="1">
+        <tr>
+            <th>Word</th>
+            <th>POS</th>
+            <th>NER</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.word }}</td>
+            <td>{{ result.pos }}</td>
+            <td>{{ result.ner }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
