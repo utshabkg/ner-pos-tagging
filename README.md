@@ -56,6 +56,8 @@ python inference.py
 
 Provide any Bangla Sentence and get the results.
 
+**NOTE:** I have trained the model with `max_token=25`, so keep total number of words and punctuation within that. You can increase the token size and train a larger model too.
+
 ## Training Model with Custom Dataset & Evaluate
 
 For creating a base model of your own to be preprocessed and trained with your data, run:

@@ -2,6 +2,7 @@ import numpy as np
 import pickle
 from keras.models import load_model
 from keras_preprocessing.sequence import pad_sequences
+from bnlp import BasicTokenizer
 
 def load_vocabulary_and_labels(vocab_path, pos_path, ner_path):
     with open(vocab_path, 'rb') as f:
@@ -13,7 +14,9 @@ def load_vocabulary_and_labels(vocab_path, pos_path, ner_path):
     return words_vocab, pos_vocab, ners_vocab
 
 def prepare_input(sentence, words_vocab, max_len=25):
-    tokens = sentence.split()
+    # tokens = sentence.split()
+    basic_tokenizer = BasicTokenizer()
+    tokens = basic_tokenizer(sentence)
     x = [words_vocab.get(token, words_vocab['ENDPAD']) for token in tokens]
     x_padded = pad_sequences(maxlen=max_len, sequences=[x], padding='post', value=words_vocab['ENDPAD'])
     return x_padded, tokens
