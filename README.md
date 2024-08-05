@@ -49,7 +49,7 @@ Follow these steps to set up your project environment:
 
 You can Provide any Bangla Sentence and get the results. Available both in **Terminal** and a **Web Application** (powered by `FastAPI`)
 
-### For Terminal
+### For Web Application
 
 ```bash
 python main.py
@@ -57,11 +57,23 @@ python main.py
 
 Open your browser and go to http://localhost:8000/
 
-### For Web Application
+### For Terminal
 
 ```bash
 cd components
 python inference.py
+```
+
+### Endpoint to check with Curl or Postman
+
+Prediction (Terminal should have Bangla Unicode Support to understand result):
+```bash
+curl -X POST "http://127.0.0.1:8000/predict_json" -H "Content-Type: application/x-www-form-urlencoded" -d "sentence=আমি বাংলা ভাষায় কথা বলি"
+```
+Health Check:
+
+```bash
+curl -X GET "http://127.0.0.1:8000/health"
 ```
 
 **NOTE:** I have trained the model with `max_token=25`, so keep total number of words and punctuation within that. You can increase the token size and train a larger model too.
