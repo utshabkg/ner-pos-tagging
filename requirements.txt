@@ -7,4 +7,5 @@ seaborn
 keras
 tensorflow
 keras-tuner
+Keras-Preprocessing
 ipykernel
