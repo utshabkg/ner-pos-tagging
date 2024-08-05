@@ -2,8 +2,9 @@ import sys
 import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'components')))
+
 from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from components.inference import ModelInference
@@ -32,6 +33,18 @@ async def predict(request: Request, sentence: str = Form(...)):
     pos_labels, ner_labels, tokens = model_inference.predict(sentence)
     results = [{"word": tokens[i], "pos": pos_labels[i], "ner": ner_labels[i]} for i in range(len(tokens))]
     return templates.TemplateResponse("index.html", {"request": request, "results": results, "sentence": sentence})
+
+
+@app.post("/predict_json", response_class=JSONResponse)
+async def predict_json(sentence: str = Form(...)):
+    pos_labels, ner_labels, tokens = model_inference.predict(sentence)
+    results = [{"word": tokens[i], "pos": pos_labels[i], "ner": ner_labels[i]} for i in range(len(tokens))]
+    return JSONResponse(content={"results": results})
+
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
 
 
 if __name__ == "__main__":
