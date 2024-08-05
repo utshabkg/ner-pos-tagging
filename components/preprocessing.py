@@ -1,5 +1,7 @@
-from utils.preprocessing_utils import load_data, add_sentence_numbers, get_vocabulary, combine_word_ner_pos, prepare_data, save_data
+from utils.preprocessing_utils import load_data, add_sentence_numbers, get_vocabulary, combine_word_ner_pos, \
+    prepare_data, save_data
 from sklearn.model_selection import train_test_split
+
 
 class Preprocessor:
     def __init__(self, file_path, output_dir, max_len=25, test_size=0.2, random_state=42):
@@ -19,8 +21,9 @@ class Preprocessor:
         train_x, test_x, train_y_pos, test_y_pos, train_y_ner, test_y_ner = train_test_split(
             x, y_pos, y_ner, test_size=self.test_size, random_state=self.random_state)
 
-        save_data(train_x, test_x, train_y_pos, test_y_pos, train_y_ner, test_y_ner, 
+        save_data(train_x, test_x, train_y_pos, test_y_pos, train_y_ner, test_y_ner,
                   words_vocab, pos_vocab, ners_vocab, words, poss, ners, self.output_dir)
+
 
 if __name__ == "__main__":
     file_path = '../dataset/data.tsv'

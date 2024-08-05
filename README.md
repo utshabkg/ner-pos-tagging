@@ -6,7 +6,7 @@
 
 ## Prerequisites
 
-- **Conda**: Ensure you have `Conda` installed on your system. If not, you can download and install it from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). You can use `Poetry` or any other tools too, if you know how to setup with them.
+- **Conda**: Ensure you have `Conda` installed on your system. If not, you can download and install it from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). You can use `Virtualenv` or `Poetry` or any other tools too, if you know how to setup with them.
 
 ## Environment Setup
 
@@ -47,14 +47,22 @@ Follow these steps to set up your project environment:
 
 ## Inference
 
-After setting up and activating the environment, run:
+You can Provide any Bangla Sentence and get the results. Available both in **Terminal** and a **Web Application** (powered by `FastAPI`)
+
+### For Terminal
+
+```bash
+python main.py
+```
+
+Open your browser and go to http://localhost:8000/
+
+### For Web Application
 
 ```bash
 cd components
 python inference.py
 ```
-
-Provide any Bangla Sentence and get the results.
 
 **NOTE:** I have trained the model with `max_token=25`, so keep total number of words and punctuation within that. You can increase the token size and train a larger model too.
 
