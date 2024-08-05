@@ -1,32 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Model Prediction</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangla NER & POS Tagging</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Model Prediction</h1>
-    <form action="/predict" method="post">
-        <label for="sentence">Enter a Bangla sentence:</label><br>
-        <textarea id="sentence" name="sentence" rows="4" cols="50">{{ sentence | safe }}</textarea><br><br>
-        <input type="submit" value="Predict">
-    </form>
+    <div class="container">
+        <h1>Bangla NER & POS Tagging</h1>
+        <form action="/predict" method="post">
+            <label for="sentence">Enter a Bangla sentence:</label>
+            <input type="text" id="sentence" name="sentence" required>
+            <button type="submit">Predict</button>
+        </form>
 
-    {% if results %}
-    <h2>Predictions:</h2>
-    <table border="1">
-        <tr>
-            <th>Word</th>
-            <th>POS</th>
-            <th>NER</th>
-        </tr>
-        {% for result in results %}
-        <tr>
-            <td>{{ result.word }}</td>
-            <td>{{ result.pos }}</td>
-            <td>{{ result.ner }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+        {% if sentence %}
+        <div class="results">
+            <h2>Results for: "{{ sentence }}"</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>POS Tag</th>
+                        <th>NER Tag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                    <tr>
+                        <td>{{ result.word }}</td>
+                        <td>{{ result.pos }}</td>
+                        <td>{{ result.ner }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
 </body>
 </html>
