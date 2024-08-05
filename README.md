@@ -1,1 +1,79 @@
-# end-to-end-nlp-practice
+# (GigaTech) end-to-end NER & POS Tagging Classification.
+
+[![Author](https://img.shields.io/badge/author-utshabkg-red)](https://github.com/utshabkg/)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-blue.svg?style=flat)](https://github.com/utshabkg/end-to-end-nlp-practice/)
+[![Stars](https://img.shields.io/github/stars/utshabkg/end-to-end-nlp-practice?style=social)](https://github.com/utshabkg/end-to-end-nlp-practice/stargazers)
+
+## Prerequisites
+
+- **Conda**: Ensure you have `Conda` installed on your system. If not, you can download and install it from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). You can use `Poetry` or any other tools too, if you know how to setup with them.
+
+## Environment Setup
+
+Follow these steps to set up your project environment:
+
+1. **Clone the repository** (if you haven't done so already):
+
+   ```bash
+   git clone https://github.com/utshabkg/end-to-end-nlp-practice/
+   cd end-to-end-nlp-practice
+   ```
+2. **Run the setup script**:
+
+   This script will create a new Conda environment named `gigatech` with Python 3.10 and install all the required packages.
+
+   ```bash
+   bash setup_env.sh
+   ```
+3. **Activate the Conda environment**:
+
+   After running the setup script, activate the new environment (if not activated):
+
+   ```bash
+   conda activate gigatech
+   ```
+4. **Verify the installation**:
+
+   Ensure that all packages are installed correctly by running:
+
+   ```bash
+   pip list
+   ```
+
+   This should display a list of installed packages.
+
+## Inference
+
+After setting up and activating the environment, run:
+
+```bash
+cd components
+python inference.py
+```
+
+Provide any Bangla Sentence and get the results.
+
+## Training Model with Custom Dataset & Evaluate
+
+For creating a base model of your own to be preprocessed and trained with your data, run:
+
+```bash
+cd components
+python preprocessing.py
+python model_training.py
+```
+
+A model will be created at the path: `models/custom_data_model.h5`. NOTE: Data format should be the same as dataset folder.
+
+Evaluate your new model with:
+
+```bash
+cd components
+python model_evaluation.py
+```
+
+You will get your results in: `reports/final_score_custom.txt` file.
+
+## Data Exploration
+
+If you are interested in Exploratory Data Analysis, Preprocessing, and other experiments (e.g. Hyperparameter Tuning) which I enjoyed, you can watch the `notebooks` folder.
