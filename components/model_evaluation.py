@@ -82,10 +82,8 @@ class ModelEvaluator:
 
         save_metrics(self.report_path, pos_accuracy, pos_classification_report, ner_accuracy, ner_classification_report)
 
-        print(f"Metrics have been saved to '{self.report_path}'.")
-
 if __name__ == "__main__":
-    model_path = '../notebooks/models_evaluation/models/base_model.h5'
+    model_path = '../notebooks/models_evaluation/models/custom_data_model.h5'
     report_path = '../reports/final_score_custom.txt'
     PROCESSED_DATA_DIR = "../notebooks/analysis-preprocessing/processed_data"
     trainer = ModelEvaluator(model_path, report_path, PROCESSED_DATA_DIR)
