@@ -1,12 +1,26 @@
 import pandas as pd
 import numpy as np
 from keras_preprocessing.sequence import pad_sequences
+from bnlp import BasicTokenizer
 import pickle
 import os
+
+def check_tokens(tokens):
+    if isinstance(tokens, list):
+        if len(tokens) == 2:
+            return tokens[0]
+        else:
+            return ' '.join(tokens)  # Detokenize
+    return tokens
 
 def load_data(file_path):
     data = pd.read_csv(file_path, sep='\t', header=None, names=['Token', 'POS', 'NER'], skip_blank_lines=False)
     data_cleaned = data.dropna(how='all').reset_index(drop=True)
+    
+    basic_tokenizer = BasicTokenizer()
+    data['Token'] = data['Token'].apply(lambda x: basic_tokenizer.tokenize(x) if isinstance(x, str) else x)
+    data['Token'] = data['Token'].apply(check_tokens)
+    
     return data_cleaned
 
 def add_sentence_numbers(data):
