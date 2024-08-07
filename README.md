@@ -64,6 +64,16 @@ cd components
 python inference.py
 ```
 
+## Dockerize (Bonus)
+
+```bash
+docker build -t gigatech-app .    # build the image
+docker run -d -p 8000:8000 gigatech-app    # run the image
+docker ps    # check
+```
+
+Open your browser and go to http://localhost:8000/
+
 ### Endpoint to check with Curl or Postman
 
 Prediction (Terminal should have Bangla Unicode Support to understand result):
