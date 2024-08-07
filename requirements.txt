@@ -1,11 +1,11 @@
 pandas
 numpy
-scikit-learn 
+scikit-learn
 scipy
 matplotlib
 seaborn
-keras
-tensorflow
+keras==2.15.0
+tensorflow==2.15.1
 keras-tuner
 Keras-Preprocessing
 ipykernel
@@ -16,3 +16,4 @@ nltk
 fastapi
 uvicorn
 jinja2
+python-multipart
