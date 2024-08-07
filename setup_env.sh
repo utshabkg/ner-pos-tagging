@@ -10,8 +10,8 @@ REQUIREMENTS_FILE="requirements.txt"
 
 # Function to create conda environment
 create_conda_env() {
-    echo "Creating conda environment: $ENV_NAME with Python 3.10..."
-    conda create -y -n $ENV_NAME python=3.10
+    echo "Creating conda environment: $ENV_NAME with Python 3.10.14..."
+    conda create -y -n $ENV_NAME python=3.10.14
 }
 
 # Function to activate conda environment
