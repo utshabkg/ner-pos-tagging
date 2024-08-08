@@ -18,7 +18,6 @@ Follow these steps to set up your project environment:
    git clone https://github.com/utshabkg/end-to-end-nlp-practice/
    cd end-to-end-nlp-practice
    ```
-
 2. **Run the setup script**:
 
    This script will create a new Conda environment named `gigatech` with Python 3.10 and install all the required packages.
@@ -26,7 +25,6 @@ Follow these steps to set up your project environment:
    ```bash
    bash setup_env.sh
    ```
-
 3. **Activate the Conda environment**:
 
    After running the setup script, activate the new environment (if not activated):
@@ -34,7 +32,6 @@ Follow these steps to set up your project environment:
    ```bash
    conda activate gigatech
    ```
-
 4. **Verify the installation**:
 
    Ensure that all packages are installed correctly by running:
@@ -49,7 +46,7 @@ Follow these steps to set up your project environment:
 
 You can Provide any Bangla Sentence and get the results. Available both in **Terminal** and a **Web Application** (powered by `FastAPI`)
 
-### For Web Application
+### Web Application
 
 ```bash
 python main.py
@@ -64,7 +61,7 @@ cd components
 python inference.py
 ```
 
-## Dockerize (Bonus)
+### Dockerize (Bonus)
 
 ```bash
 docker build -t gigatech-app .    # build the image
@@ -75,20 +72,25 @@ docker ps    # check
 Open your browser and go to http://localhost:8000/
 
 NOTE: Please wait some time to load all the components after the running of container. You can see docker log with:
+
 ```bash
 docker logs <container-id>
 ```
-The container is ready to watch in the browser after this message appears in the log: 
-```bash 
+
+The container is ready to watch in the browser after this message appears in the log:
+
+```bash
 Application startup complete.
 ```
 
-### Endpoint to check with Curl or Postman
+### Endpoints to check with Curl or Postman
 
 Predict (Terminal should have Bangla Unicode Support to understand result):
+
 ```bash
 curl -X POST "http://127.0.0.1:8000/predict_json" -H "Content-Type: application/x-www-form-urlencoded" -d "sentence=আমি বাংলা ভাষায় কথা বলি"
 ```
+
 Health Check:
 
 ```bash
@@ -96,6 +98,22 @@ curl -X GET "http://127.0.0.1:8000/health"
 ```
 
 **NOTE:** I have trained the model with `max_token=25`, so keep total number of words and punctuation within that. You can increase the token size and train a larger model too.
+
+### ONNX Integration
+
+```bash
+cd components/utils
+python convert_model_onnx.py    # convert model to onnx
+```
+
+A model will be created at the path: `notebooks/models_evaluation/models/base_model.onnx`.
+
+Inference:
+
+```bash
+cd components
+python inference_onnx.py
+```
 
 ## Training Model with Custom Dataset & Evaluate
 
@@ -107,7 +125,7 @@ python preprocessing.py
 python model_training.py
 ```
 
-A model will be created at the path: `models/custom_data_model.h5`.
+A model will be created at the path: `notebooks/models_evaluation/models/custom_data_model.h5`.
 
 Evaluate your new model with:
 
