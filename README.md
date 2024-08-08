@@ -1,8 +1,8 @@
 # (GigaTech) end-to-end NER & POS Tagging Classification.
 
 [![Author](https://img.shields.io/badge/author-utshabkg-red)](https://github.com/utshabkg/)
-[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-blue.svg?style=flat)](https://github.com/utshabkg/end-to-end-nlp-practice/)
-[![Stars](https://img.shields.io/github/stars/utshabkg/end-to-end-nlp-practice?style=social)](https://github.com/utshabkg/end-to-end-nlp-practice/stargazers)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-blue.svg?style=flat)](https://github.com/utshabkg/ner-pos-tagging/)
+[![Stars](https://img.shields.io/github/stars/utshabkg/ner-pos-tagging?style=social)](https://github.com/utshabkg/ner-pos-tagging/stargazers)
 
 ## Prerequisites
 
@@ -15,8 +15,8 @@ Follow these steps to set up your project environment:
 1. **Clone the repository** (if you haven't done so already):
 
    ```bash
-   git clone https://github.com/utshabkg/end-to-end-nlp-practice/
-   cd end-to-end-nlp-practice
+   git clone https://github.com/utshabkg/ner-pos-tagging/
+   cd ner-pos-tagging
    ```
 2. **Run the setup script**:
 
@@ -143,3 +143,19 @@ You will get your results in: `reports/final_score_custom.txt` file.
 If you are interested in Exploratory Data Analysis, Preprocessing, and other experiments (e.g. Hyperparameter Tuning) which I enjoyed, you can watch the `notebooks` folder.
 
 ## Documentation of Work Details
+
+A document explaining the code and decisions made during the development process. [Click here](https://github.com/utshabkg/ner-pos-tagging/blob/main/DOCUMENTATION.md).
+
+## Performance Metrics
+
+A report of the model's performance on the test set, including accuracy, precision, recall, and F1 score. [Click here](https://github.com/utshabkg/ner-pos-tagging/blob/main/reports/score_1_base.txt).
+
+### Base Model
+
+A Plotting of training and validation accuracy and loss plot during a base model training.
+
+![accuracy_plot](reports/accuracy_plot.png)
+![loss_plot](reports/loss_plot.png)
+
+
+Hyperparameter tuning was executed too. If you want, you can explore the ``models/parameters_track`` folder to see the outcomes.
