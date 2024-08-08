@@ -68,15 +68,24 @@ python inference.py
 
 ```bash
 docker build -t gigatech-app .    # build the image
-docker run -d -p 8000:8000 gigatech-app    # run the image
+docker run -d -p 8000:8000 fb8974ff6273    # run the container
 docker ps    # check
 ```
 
 Open your browser and go to http://localhost:8000/
 
+NOTE: Please wait some time to load all the components after the running of container. You can see docker log with:
+```bash
+docker logs <container-id>
+```
+The container is ready to watch in the browser after this message appears in the log: 
+```bash 
+Application startup complete.
+```
+
 ### Endpoint to check with Curl or Postman
 
-Prediction (Terminal should have Bangla Unicode Support to understand result):
+Predict (Terminal should have Bangla Unicode Support to understand result):
 ```bash
 curl -X POST "http://127.0.0.1:8000/predict_json" -H "Content-Type: application/x-www-form-urlencoded" -d "sentence=আমি বাংলা ভাষায় কথা বলি"
 ```
@@ -114,3 +123,5 @@ You will get your results in: `reports/final_score_custom.txt` file.
 ## Data Exploration
 
 If you are interested in Exploratory Data Analysis, Preprocessing, and other experiments (e.g. Hyperparameter Tuning) which I enjoyed, you can watch the `notebooks` folder.
+
+## Documentation of Work Details
