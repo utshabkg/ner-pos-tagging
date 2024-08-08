@@ -106,7 +106,7 @@ cd components/utils
 python convert_model_onnx.py    # convert model to onnx
 ```
 
-A model will be created at the path: `notebooks/models_evaluation/models/base_model.onnx`.
+A model (has been already) created at the path: `notebooks/models_evaluation/models/base_model.onnx`.
 
 Inference:
 
@@ -156,6 +156,5 @@ A Plotting of training and validation accuracy and loss plot during a base model
 
 ![accuracy_plot](reports/accuracy_plot.png)
 ![loss_plot](reports/loss_plot.png)
-
 
 Hyperparameter tuning was executed too. If you want, you can explore the ``models/parameters_track`` folder to see the outcomes.
