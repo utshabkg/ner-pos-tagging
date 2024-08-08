@@ -17,3 +17,8 @@ fastapi
 uvicorn
 jinja2
 python-multipart
+
+#onxx
+onnx
+tf2onnx
+onnxruntime
