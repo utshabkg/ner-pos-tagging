@@ -163,3 +163,4 @@ cython_debug/
 notebooks/models_evaluation/models/*
 !notebooks/models_evaluation/models/parameters_track/
 !base_model.onnx
+!base_model.h5

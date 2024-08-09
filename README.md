@@ -18,6 +18,7 @@ Follow these steps to set up your project environment:
    git clone https://github.com/utshabkg/ner-pos-tagging/
    cd ner-pos-tagging
    ```
+
 2. **Run the setup script**:
 
    This script will create a new Conda environment named `gigatech` with Python 3.10 and install all the required packages.
@@ -25,6 +26,7 @@ Follow these steps to set up your project environment:
    ```bash
    bash setup_env.sh
    ```
+
 3. **Activate the Conda environment**:
 
    After running the setup script, activate the new environment (if not activated):
@@ -32,6 +34,7 @@ Follow these steps to set up your project environment:
    ```bash
    conda activate gigatech
    ```
+
 4. **Verify the installation**:
 
    Ensure that all packages are installed correctly by running:
@@ -144,7 +147,7 @@ If you are interested in Exploratory Data Analysis, Preprocessing, and other exp
 
 ## Documentation of Work Details
 
-A document explaining the code and decisions made during the development process. [Click here](https://github.com/utshabkg/ner-pos-tagging/blob/main/DOCUMENTATION.md).
+A document explaining the code and decisions made during the development process. [Click here](https://github.com/utshabkg/ner-pos-tagging/blob/main/EXPLANATION.md).
 
 ## Performance Metrics
 
@@ -157,4 +160,4 @@ A Plotting of training and validation accuracy and loss plot during a base model
 ![accuracy_plot](reports/accuracy_plot.png)
 ![loss_plot](reports/loss_plot.png)
 
-Hyperparameter tuning was executed too. If you want, you can explore the ``models/parameters_track`` folder to see the outcomes.
+Hyperparameter tuning was executed too. If you want, you can explore the `models/parameters_track` folder to see the outcomes.
