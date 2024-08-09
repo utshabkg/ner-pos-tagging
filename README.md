@@ -8,7 +8,7 @@
 
 - For testing the deployed project in the cloud, there is no prerequisite! Go to [this link](https://ner-pos-tagging.onrender.com/) and test with any Bangla sentence you want.
   
-  **NOTE:** Since it's a free instance of Render, it will spin down with inactivity, which can delay requests by 50 seconds or more. For now, the Bangla sentence may have a maximum of 25 tokens as the base model was trained with that size.
+  **NOTE:** Since it's a free instance of Render, it will spin down with inactivity, which can delay requests by 50 seconds or more. **So, please wait for 1-2 minutes to initiate the web app.** For now, the Bangla sentence may have a maximum of 25 tokens as the base model was trained with that size.
   A quick look at the web application:
   
   ![web_app](reports/web_app.jpg)
