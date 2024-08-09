@@ -6,18 +6,21 @@
 
 ## Prerequisites
 
-- For testing the deployed project in cloud, there is no prerequisite! Go to [this link](https://ner-pos-tagging.onrender.com/) and test with any Bangla sentence you want.
-  _NOTE:_ Since it's a free instance of Render, it will spin down with inactivity, which can delay requests by 50 seconds or more. And for now, the Bangla sentence may have maiximum 25 tokens as the base model was trained with that size.
-  A quick look of the web application:
+- For testing the deployed project in the cloud, there is no prerequisite! Go to [this link](https://ner-pos-tagging.onrender.com/) and test with any Bangla sentence you want.
+  
+  **NOTE:** Since it's a free instance of Render, it will spin down with inactivity, which can delay requests by 50 seconds or more. For now, the Bangla sentence may have a maximum of 25 tokens as the base model was trained with that size.
+  A quick look at the web application:
+  
   ![web_app](reports/web_app.jpg)
-- Now it's time to run the project in your system. For that:
-  **Conda**: Ensure you have `Conda` installed on your system. If not, you can download and install it from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). You can use `Virtualenv` or `Poetry` or any other tools too, if you know how to setup with them.
+- Now it's time to run and test the project in your system. For that:
+
+  **Conda**: Ensure your system has `Conda` installed. If not, you can download and install it from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). You can use `Virtualenv` or `Poetry` or any other tools too, if you know how to set up with them.
 
 ## Environment Setup
 
 Follow these steps to set up your project environment:
 
-1. **Clone the repository** (if you haven't done so already):
+1. **Clone the repository**:
 
    ```bash
    git clone https://github.com/utshabkg/ner-pos-tagging/
@@ -73,16 +76,17 @@ python inference.py
 
 ```bash
 docker build -t gigatech-app .    # build the image
-docker run -d -p 8000:8000 fb8974ff6273    # run the container
+docker run -d -p 8000:8000 gigatech-app    # run the container
 docker ps    # check
+docker stop <container-id-from-ps>    # stop
 ```
 
 Open your browser and go to http://localhost:8000/
 
-NOTE: Please wait some time to load all the components after the running of container. You can see docker log with:
+**NOTE:** Please wait some time to load all the components after running the container. You can see the docker log with:
 
 ```bash
-docker logs <container-id>
+docker logs <container-id-from-ps>
 ```
 
 The container is ready to watch in the browser after this message appears in the log:
@@ -93,19 +97,19 @@ Application startup complete.
 
 ### Endpoints to check with Curl or Postman
 
-Predict (Terminal should have Bangla Unicode Support to understand result):
+**Predict**: (Terminal should have Bangla Unicode Support to understand result)
 
 ```bash
 curl -X POST "http://127.0.0.1:8000/predict_json" -H "Content-Type: application/x-www-form-urlencoded" -d "sentence=আমি বাংলা ভাষায় কথা বলি"
 ```
 
-Health Check:
+**Health Check:**
 
 ```bash
 curl -X GET "http://127.0.0.1:8000/health"
 ```
 
-**NOTE:** I have trained the model with `max_token=25`, so keep total number of words and punctuation within that. You can increase the token size and train a larger model too.
+**NOTE:** I have trained the model with `max_token=25`, so keep the total number of words and punctuation within that. You can increase the token size and train a larger model too.
 
 ### ONNX Integration
 
@@ -116,7 +120,7 @@ python convert_model_onnx.py    # convert model to onnx
 
 A model (has been already) created at the path: `notebooks/models_evaluation/models/base_model.onnx`.
 
-Inference:
+**Inference**
 
 ```bash
 cd components
@@ -144,7 +148,7 @@ python model_evaluation.py
 
 You will get your results in: `reports/final_score_custom.txt` file.
 
-**NOTE:** Data format should be the same as dataset folder. It should be a `.tsv` file. Rename your dataset file to `data.tsv`, keep it inside the `dataset` folder and you're all set!
+**NOTE:** Data format should be the same as the dataset folder. It should be a `.tsv` file. Rename your dataset file to `data.tsv`, keep it inside the `dataset` folder and you're all set!
 
 ## Data Exploration
 
@@ -165,4 +169,4 @@ A Plotting of training and validation accuracy and loss plot during a [base mode
 ![accuracy_plot](reports/accuracy_plot.png)
 ![loss_plot](reports/loss_plot.png)
 
-Hyperparameter tuning was executed too. If you want, you can explore the `models/parameters_track` folder to see the outcomes.
+**Hyperparameter tuning** was executed too. If you want, you can explore the [`models/parameters_track`](https://github.com/utshabkg/ner-pos-tagging/tree/main/notebooks/models_evaluation/models/parameters_track) folder to see the outcomes.
