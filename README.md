@@ -6,7 +6,12 @@
 
 ## Prerequisites
 
-- **Conda**: Ensure you have `Conda` installed on your system. If not, you can download and install it from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). You can use `Virtualenv` or `Poetry` or any other tools too, if you know how to setup with them.
+- For testing the deployed project in cloud, there is no prerequisite! Go to [this link](https://ner-pos-tagging.onrender.com/) and test with any Bangla sentence you want.
+  _NOTE:_ Since it's a free instance of Render, it will spin down with inactivity, which can delay requests by 50 seconds or more. And for now, the Bangla sentence may have maiximum 25 tokens as the base model was trained with that size.
+  A quick look of the web application:
+  ![web_app](reports/web_app.jpg)
+- Now it's time to run the project in your system. For that:
+  **Conda**: Ensure you have `Conda` installed on your system. If not, you can download and install it from [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). You can use `Virtualenv` or `Poetry` or any other tools too, if you know how to setup with them.
 
 ## Environment Setup
 
@@ -155,7 +160,7 @@ A report of the model's performance on the test set, including accuracy, precisi
 
 ### Base Model
 
-A Plotting of training and validation accuracy and loss plot during a base model training.
+A Plotting of training and validation accuracy and loss plot during a [base model](https://github.com/utshabkg/ner-pos-tagging/blob/main/notebooks/models_evaluation/models/base_model.h5) training.
 
 ![accuracy_plot](reports/accuracy_plot.png)
 ![loss_plot](reports/loss_plot.png)
