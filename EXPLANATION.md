@@ -52,9 +52,9 @@ The chosen model is a sequence-to-sequence architecture combining an embedding l
    An embedding layer is used to transform token indices into dense vectors of a fixed size (25 dimensions). This layer learns the representations of tokens during training and captures semantic relationships between them.
 3. **LSTM Layer**
    An LSTM layer with 100 units is employed to capture temporal dependencies in the token sequences. LSTM units are particularly suitable for handling sequential data and learning context from previous tokens. The ``return_sequences=True`` parameter ensures that the LSTM layer outputs a sequence for each token, which is necessary for sequence-to-sequence tasks. ``recurrent_dropout=0.1`` is applied to prevent overfitting by randomly dropping connections during training.
-4. **Output Layers
-   POS Output Layer:** A Dense layer with a softmax activation function is used to predict POS tags for each token. The number of units in this layer corresponds to the number of unique POS tags.
-   **NER Output Layer:** Similarly, another Dense layer with a softmax activation function is used for predicting NER labels. The number of units matches the number of unique NER labels.
+4. **Output Layers**
+   - **POS Output Layer:** A Dense layer with a softmax activation function is used to predict POS tags for each token. The number of units in this layer corresponds to the number of unique POS tags.
+   - **NER Output Layer:** Similarly, another Dense layer with a softmax activation function is used for predicting NER labels. The number of units matches the number of unique NER labels.
 5. **Compilation**
    The model is compiled with the Adam optimizer, which is known for its efficiency and adaptive learning rates. The loss functions used are sparse_categorical_crossentropy for both POS and NER tasks, suitable for multi-class classification problems. Accuracy is used as the metric to evaluate the model's performance on both tasks.
 
