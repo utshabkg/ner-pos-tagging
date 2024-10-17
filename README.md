@@ -1,4 +1,4 @@
-# (GigaTech) end-to-end NER & POS Tagging Classification.
+# end-to-end (Bengali) NER & POS Tagging Classification.
 
 [![Author](https://img.shields.io/badge/author-utshabkg-red)](https://github.com/utshabkg/)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-blue.svg?style=flat)](https://github.com/utshabkg/ner-pos-tagging/)
